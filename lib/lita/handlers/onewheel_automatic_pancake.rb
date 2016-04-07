@@ -1,6 +1,4 @@
 require 'rest-client'
-require 'nokogiri'
-require 'sanitize'
 
 module Lita
   module Handlers
