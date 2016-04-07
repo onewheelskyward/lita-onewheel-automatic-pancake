@@ -1,11 +1,11 @@
 Gem::Specification.new do |spec|
-  spec.name          = 'lita-onewheel-baileys'
-  spec.version       = '3.0.0'
+  spec.name          = 'lita-onewheel-automatic-pancake'
+  spec.version       = '0.0.0'
   spec.authors       = ['Andrew Kreps']
   spec.email         = ['andrew.kreps@gmail.com']
-  spec.description   = %q{Lita interface to Bailey's Taproom listings.}
-  spec.summary       = %q{See above.}
-  spec.homepage      = 'https://github.com/onewheelskyward/lita-onewheel-baileys'
+  spec.description   = %q{Lita interface to Automatic Pancake.}
+  spec.summary       = %q{http://github.com/onewheelskyward/automatic-pancake}
+  spec.homepage      = 'https://github.com/onewheelskyward/lita-onewheel-automatic-pancake'
   spec.license       = 'MIT'
   spec.metadata      = { 'lita_plugin_type' => 'handler' }
 
@@ -16,8 +16,6 @@ Gem::Specification.new do |spec|
 
   spec.add_runtime_dependency 'lita', '~> 4.7'
   spec.add_runtime_dependency 'rest-client', '~> 1.8'
-  spec.add_runtime_dependency 'nokogiri', '~> 1.6'
-  spec.add_runtime_dependency 'sanitize', '~> 4.0'
 
   spec.add_development_dependency 'bundler', '~> 1.3'
   # spec.add_development_dependency 'pry-byebug', '~> 3.1'
