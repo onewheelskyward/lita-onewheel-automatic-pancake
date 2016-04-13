@@ -17,6 +17,7 @@ module Lita
         chosen_one = list_of_matches.sample
         Lita.logger.debug "#{list_of_matches.count} matches, chose #{chosen_one.to_s}"
         play_file(chosen_one)
+        response.reply "Playing #{chosen_one['name']}!"
       end
 
       def get_matches(search_term)
