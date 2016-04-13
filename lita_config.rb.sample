@@ -1,3 +1,4 @@
 Lita.configure do |config|
+  config.robot.log_level = :debug
   config.handlers.onewheel_automatic_pancake.pancake_server = 'http://10.44.1.222:3456'
 end
