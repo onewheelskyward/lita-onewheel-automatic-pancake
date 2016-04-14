@@ -10,6 +10,11 @@ module Lita
             command: true,
             help: {'play' => 'Play something with this text.'}
 
+      route /^kill$/i,
+            :kill,
+            command: true,
+            help: {'kill' => 'MAKE IT STOP'}
+
       def play(response)
         search_term = response.matches[0][0]
         Lita.logger.debug "Search term found #{search_term}"
@@ -18,6 +23,17 @@ module Lita
         Lita.logger.debug "#{list_of_matches.count} matches, chose #{chosen_one.to_s}"
         play_file(chosen_one)
         response.reply "Playing #{chosen_one['name']}!"
+      end
+
+      def kill(response)
+        Lita.logger.debug 'Killing'
+        kill_sound
+      end
+
+      def kill_sound
+        uri = "#{config.pancake_server}/kill"
+        Lita.logger.debug "Killing!  #{uri}"
+        RestClient.post uri, {}
       end
 
       def get_matches(search_term)
