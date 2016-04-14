@@ -15,6 +15,16 @@ module Lita
             command: true,
             help: {'kill' => 'MAKE IT STOP'}
 
+      route /^vol up/i,
+            :vol_up,
+            command: true,
+            help: {'vol up' => 'Turn it up!'}
+
+      route /^vol down/i,
+            :vol_down,
+            command: true,
+            help: {'vol down' => 'Turn it down!'}
+
       def play(response)
         search_term = response.matches[0][0]
         Lita.logger.debug "Search term found #{search_term}"
@@ -28,6 +38,14 @@ module Lita
       def kill(response)
         Lita.logger.debug 'Killing'
         kill_sound
+      end
+
+      def vol_up(response)
+        RestClient.post "#{config.pancake_server}/vol/up", {}
+      end
+
+      def vol_down(response)
+        RestClient.post "#{config.pancake_server}/vol/down", {}
       end
 
       def kill_sound
