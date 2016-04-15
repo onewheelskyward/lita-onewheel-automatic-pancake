@@ -54,7 +54,9 @@ module Lita
       end
 
       def youtube(response)
-        RestClient.post "#{config.pancake_server}/youtube", {uri: response.matches[0][0]}
+        youtube_id = response.matches[0][0]
+        RestClient.post "#{config.pancake_server}/youtube", {uri: youtube_id}
+        response.reply "Gathering youtubes for #{youtube_id}, brace yourselves."
       end
 
       def kill_sound
