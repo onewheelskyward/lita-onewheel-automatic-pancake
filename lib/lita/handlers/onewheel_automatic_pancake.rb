@@ -25,6 +25,11 @@ module Lita
             command: true,
             help: {'vol down' => 'Turn it down!'}
 
+      route /^playtube (.*)$/i,
+            :youtube,
+            command: true,
+            help: {'playtube' => 'Play this youtube.'}
+
       def play(response)
         search_term = response.matches[0][0]
         Lita.logger.debug "Search term found #{search_term}"
@@ -46,6 +51,10 @@ module Lita
 
       def vol_down(response)
         RestClient.post "#{config.pancake_server}/vol/down", {}
+      end
+
+      def youtube(response)
+        RestClient.post "#{config.pancake_server}/youtube", {uri: response.matches[0][0]}
       end
 
       def kill_sound
