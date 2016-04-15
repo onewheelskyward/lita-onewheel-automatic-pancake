@@ -46,11 +46,15 @@ module Lita
       end
 
       def vol_up(response)
-        RestClient.post "#{config.pancake_server}/vol/up", {}
+        6.times do |i|
+          RestClient.post "#{config.pancake_server}/vol/up", {}
+        end
       end
 
       def vol_down(response)
-        RestClient.post "#{config.pancake_server}/vol/down", {}
+        6.times do |i|
+          RestClient.post "#{config.pancake_server}/vol/down", {}
+        end
       end
 
       def youtube(response)
