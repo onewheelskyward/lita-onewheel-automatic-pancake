@@ -25,6 +25,11 @@ module Lita
             command: true,
             help: {'vol down' => 'Turn it down!'}
 
+      route /^vol (\d+)/i,
+            :vol_change,
+            command: true,
+            help: {'vol 80%' => 'Set volume to 80%.'}
+
       route /^playtube (.*)$/i,
             :youtube,
             command: true,
@@ -46,15 +51,19 @@ module Lita
       end
 
       def vol_up(response)
-        6.times do |i|
+        3.times do |i|
           RestClient.post "#{config.pancake_server}/vol/up", {}
         end
       end
 
       def vol_down(response)
-        6.times do |i|
+        3.times do |i|
           RestClient.post "#{config.pancake_server}/vol/down", {}
         end
+      end
+
+      def vol_change(response)
+        RestClient.post "#{config.pancake_server}/vol/#{response.matches[0][0]}", {}
       end
 
       def youtube(response)
